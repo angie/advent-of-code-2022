@@ -20,4 +20,16 @@ export function getMostTotalCalories(data: string): number {
   return highest;
 }
 
-console.log(getMostTotalCalories(input));
+export function getSumOfTop3Calories(data: string): number {
+  const totalCaloriesPerElf = getElves(data).map((cals) => {
+    return cals.reduce((acc, curr) => {
+      return acc + curr;
+    }, 0);
+  });
+
+  const topThree = totalCaloriesPerElf.sort((a, b) => b - a).slice(0, 3);
+  return topThree.reduce((acc, curr) => acc + curr, 0);
+}
+
+console.log("part 1: ", getMostTotalCalories(input));
+console.log("part 2: ", getSumOfTop3Calories(input));

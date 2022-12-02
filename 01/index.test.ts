@@ -1,5 +1,9 @@
 import { assertEquals } from "https://deno.land/std@0.167.0/testing/asserts.ts";
-import { getElves, getMostTotalCalories } from "./index.ts";
+import {
+  getElves,
+  getMostTotalCalories,
+  getSumOfTop3Calories,
+} from "./index.ts";
 
 const input = `1000
 2000
@@ -34,3 +38,7 @@ Deno.test(
     assertEquals(getMostTotalCalories(input), 24000);
   }
 );
+
+Deno.test("finds the total calories carried by top 3 elves", () => {
+  assertEquals(getSumOfTop3Calories(input), 45000);
+});
